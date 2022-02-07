@@ -3,7 +3,7 @@ package feature;
 public class TransactionService {
 
     public Integer deposit(Integer amount, Integer balance) {
-        return 0;
+        return amount;
     }
 
     public void withdraw(Integer amount) {
