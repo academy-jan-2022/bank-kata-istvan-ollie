@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -14,23 +15,32 @@ import static org.mockito.Mockito.verify;
 public class AccountShould {
 
         @Mock TransactionService transactionService;
+        @Mock UserInterface userInterface;
         private Account account;
 
     @BeforeEach
-        void setUp(){
-            transactionService = Mockito.mock(TransactionService.class);
-            this.account = new Account(transactionService);
-        }
+    void setUp(){
+        transactionService = Mockito.mock(TransactionService.class);
+        userInterface = Mockito.mock(UserInterface.class);
+        this.account = new Account(transactionService);
+    }
 
-        @Test
-        void invoke_transaction_service_when_depositing(){
-            account.deposit(100);
-            verify(transactionService, times(1)).deposit(100);
+
+    @Test
+    void invoke_transaction_service_when_depositing() {
+        account.deposit(100);
+        verify(transactionService, times(1)).deposit(100);
     }
 
     @Test
         void invoke_transaction_service_when_withdrawing(){
             account.withdraw(100);
             verify(transactionService, times(1)).withdraw(100);
+    }
+
+    @Test
+    void invoke_UI_when_printing(){
+        account.printStatement();
+        verify(userInterface, times(1)).printline(anyString());
     }
 }
