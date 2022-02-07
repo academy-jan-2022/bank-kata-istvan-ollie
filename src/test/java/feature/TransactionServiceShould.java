@@ -32,4 +32,23 @@ public class TransactionServiceShould {
 
 		assertEquals(200, result);
 	}
+
+	@Test
+	void
+	withdraw_return_0_when_balance_and_amount_are_0() {
+		var transactionService = new TransactionService();
+		var result = transactionService.withdraw(0, 0);
+
+		assertEquals(0, result);
+	}
+
+	@Test
+	void
+	withdraw_return_100_when_withdrawing_100_from_200() {
+		var transactionService = new TransactionService();
+		var result = transactionService.withdraw(100, 200);
+
+		assertEquals(100, result);
+	}
+
 }

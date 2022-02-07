@@ -6,7 +6,10 @@ public class TransactionService {
         return amount + balance;
     }
 
-    public void withdraw(Integer amount) {
-
+    public Integer withdraw(Integer amount, Integer balance) {
+        return 0;
     }
+
+
+
 }

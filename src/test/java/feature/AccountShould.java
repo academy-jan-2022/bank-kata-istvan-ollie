@@ -35,7 +35,7 @@ public class AccountShould {
     @Test
         void invoke_transaction_service_when_withdrawing(){
             account.withdraw(100);
-            verify(transactionService, times(1)).withdraw(100);
+            verify(transactionService, times(1)).withdraw(100, 0);
     }
 
     @Test

@@ -14,7 +14,7 @@ public class Account implements AccountService {
     }
 
     public void withdraw(int amount) {
-        transaction.withdraw(amount);
+        transaction.withdraw(amount, 0);
     }
 
     public void printStatement() {
