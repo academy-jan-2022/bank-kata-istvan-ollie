@@ -29,7 +29,7 @@ public class AccountShould {
     @Test
     void invoke_transaction_service_when_depositing() {
         account.deposit(100);
-        verify(transactionService, times(1)).deposit(100);
+        verify(transactionService, times(1)).deposit(100, 0);
     }
 
     @Test

@@ -2,8 +2,8 @@ package feature;
 
 public class TransactionService {
 
-    public void deposit(Integer amount) {
-
+    public Integer deposit(Integer amount, Integer balance) {
+        return 0;
     }
 
     public void withdraw(Integer amount) {

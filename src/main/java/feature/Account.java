@@ -10,7 +10,7 @@ public class Account implements AccountService {
     }
 
     public void deposit(int amount) {
-        transaction.deposit(amount);
+        transaction.deposit(amount, 0);
     }
 
     public void withdraw(int amount) {
