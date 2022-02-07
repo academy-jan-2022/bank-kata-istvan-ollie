@@ -1,8 +1,11 @@
 package feature;
 
 public class Account implements AccountService {
+    public Account(TransactionService transaction) {
+    }
+
     public void deposit(int amount) {
-        throw new UnsupportedOperationException();
+
     }
 
     public void withdraw(int amount) {
