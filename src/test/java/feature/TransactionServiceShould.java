@@ -14,4 +14,13 @@ public class TransactionServiceShould {
 
 		assertEquals(0, result);
 	}
+
+	@Test
+	void
+	deposit_return_100_when_depositing_100() {
+		var transactionService = new TransactionService();
+		var result = transactionService.deposit(100, 0);
+
+		assertEquals(100, result);
+	}
 }
