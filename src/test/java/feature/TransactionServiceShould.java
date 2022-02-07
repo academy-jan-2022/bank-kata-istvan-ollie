@@ -1,26 +1,24 @@
 package feature;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TransactionServiceShould {
 
-	@Mock TransactionHistory statement;
+	@Mock
+	Statement statement;
 
 	@BeforeEach
 	void setUp(){
-		this.statement = Mockito.mock(TransactionHistory.class);
+		this.statement = Mockito.mock(Statement.class);
 	}
 
 	@ParameterizedTest

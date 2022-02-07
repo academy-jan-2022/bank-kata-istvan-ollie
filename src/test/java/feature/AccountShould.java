@@ -14,7 +14,8 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class AccountShould {
 
-        @Mock TransactionService transactionService;
+        @Mock
+        TransactionService transactionService;
         @Mock UserInterface userInterface;
         private Account account;
 
