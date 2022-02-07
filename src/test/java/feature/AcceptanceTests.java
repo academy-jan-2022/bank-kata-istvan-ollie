@@ -15,7 +15,7 @@ public class AcceptanceTests {
 
     @Test
     void account_prints_balance(){
-        var account = new Account(new TransactionService());
+        var account = new Account(new TransactionService(), mockUI);
         account.deposit(1000);
         account.withdraw(2000);
         account.deposit(500);

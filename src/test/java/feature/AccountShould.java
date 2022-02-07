@@ -22,7 +22,7 @@ public class AccountShould {
     void setUp(){
         transactionService = Mockito.mock(TransactionService.class);
         userInterface = Mockito.mock(UserInterface.class);
-        this.account = new Account(transactionService);
+        this.account = new Account(transactionService, userInterface);
     }
 
 
