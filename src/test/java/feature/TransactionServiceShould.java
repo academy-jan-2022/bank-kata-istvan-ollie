@@ -1,54 +1,62 @@
 package feature;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TransactionServiceShould {
 
-	@Test
-	void
-	deposit_return_0_when_balance_and_amount_are_0() {
-		var transactionService = new TransactionService();
-		var result = transactionService.deposit(0, 0);
+	@Mock TransactionHistory statement;
 
-		assertEquals(0, result);
+	@BeforeEach
+	void setUp(){
+		this.statement = Mockito.mock(TransactionHistory.class);
 	}
 
-	@Test
+	@ParameterizedTest
+	@MethodSource("deposit_once_cases")
 	void
-	deposit_return_100_when_depositing_100() {
+	deposit_single_amounts(Integer amount, Integer balance, Integer expected) {
 		var transactionService = new TransactionService();
-		var result = transactionService.deposit(100, 0);
+		var result = transactionService.deposit(amount, balance);
 
-		assertEquals(100, result);
+		assertEquals(expected, result);
 	}
 
-	@Test
+	@ParameterizedTest
+	@MethodSource("withdraw_once_cases")
 	void
-	deposit_return_balance_plus_amount() {
+	withdraw_single_amounts(Integer amount, Integer balance, Integer expected) {
 		var transactionService = new TransactionService();
-		var result = transactionService.deposit(100, 100);
+		var result = transactionService.withdraw(amount, balance);
 
-		assertEquals(200, result);
+		assertEquals(expected, result);
 	}
 
-	@Test
-	void
-	withdraw_return_0_when_balance_and_amount_are_0() {
-		var transactionService = new TransactionService();
-		var result = transactionService.withdraw(0, 0);
-
-		assertEquals(0, result);
+	private static Stream<Arguments> deposit_once_cases(){
+		return Stream.of(
+				Arguments.of(0, 0, 0),
+				Arguments.of(100, 0, 100),
+				Arguments.of(100, 100, 200)
+		);
 	}
 
-	@Test
-	void
-	withdraw_return_100_when_withdrawing_100_from_200() {
-		var transactionService = new TransactionService();
-		var result = transactionService.withdraw(100, 200);
-
-		assertEquals(100, result);
+	private static Stream<Arguments> withdraw_once_cases(){
+		return Stream.of(
+				Arguments.of(0, 0, 0),
+				Arguments.of(100, 200, 100)
+		);
 	}
+
 
 }

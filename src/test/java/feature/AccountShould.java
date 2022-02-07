@@ -43,4 +43,5 @@ public class AccountShould {
         account.printStatement();
         verify(userInterface, times(1)).printline(anyString());
     }
+
 }
