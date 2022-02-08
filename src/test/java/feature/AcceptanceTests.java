@@ -6,29 +6,30 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AcceptanceTests {
 
     @Mock UserInterface mockUI;
     private Account account;
+    private SimpleDateProvider mockDate;
 
     @BeforeEach
     void setUp() {
         mockUI = mock(UserInterface.class);
-        this.account = new Account(new TransactionService(new Statement(), new SimpleDateProvider()),
+        mockDate = mock(SimpleDateProvider.class);
+        this.account = new Account(new TransactionService(new Statement(), mockDate),
                 mockUI);
 
     }
 
     @Test
     void account_prints_balance(){
-
+        when(mockDate.UtcNow()).thenReturn("10/01/2012", "13/01/2012", "14/01/2012");
         account.deposit(1000);
-        account.withdraw(2000);
-        account.deposit(500);
+        account.deposit(2000);
+        account.withdraw(500);
         account.printStatement();
 
         verify(mockUI).printline(

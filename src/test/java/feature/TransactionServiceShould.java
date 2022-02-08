@@ -6,7 +6,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static org.mockito.Mockito.*;
@@ -26,7 +25,7 @@ public class TransactionServiceShould {
 
     @Test
     void registers_a_deposit_transaction(){
-        var expectedDate = new Date();
+        var expectedDate = new Date().toString();
         when(dateProvider.UtcNow()).thenReturn(expectedDate);
         var transactionService = new TransactionService(statement, dateProvider);
         transactionService.deposit(100);
@@ -36,7 +35,7 @@ public class TransactionServiceShould {
 
     @Test
     void registers_a_withdraw_transaction(){
-        var expectedDate = new Date();
+        var expectedDate = new Date().toString();
         when(dateProvider.UtcNow()).thenReturn(expectedDate);
         var transactionService = new TransactionService(statement, dateProvider);
         transactionService.withdraw(100);

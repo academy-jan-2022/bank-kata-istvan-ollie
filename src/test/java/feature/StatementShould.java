@@ -1,11 +1,8 @@
 package feature;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,7 +22,7 @@ public class StatementShould {
 	@Test
 	void return_statement_containing_1_transaction(){
 		var statement = new Statement();
-		var expectedDate =  new Date();
+		var expectedDate =  new Date().toString();
 		statement.add(new Transaction(100, expectedDate));
 		var result = statement.render();
 

@@ -1,6 +1,7 @@
 package feature;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Statement {
     private final ArrayList<Transaction> transactions = new ArrayList<Transaction>();
@@ -14,12 +15,18 @@ public class Statement {
     public String render() {
         var outputSb = new StringBuilder();
         outputSb.append(statementHeader);
-
+        var newStatementList = new ArrayList<String>();
         var balance = 0;
-        for (var transaction : transactions) {
+
+        for (int i = 0; i<transactions.size(); i++) {
+            var transaction = transactions.get(i);
             balance += transaction.amount();
-            outputSb.append(transaction.transactionDate() + " || " + transaction.amount() + " || " + balance);
+            newStatementList.add(transaction.transactionDate() + " || " + transaction.amount() + " || " + balance
+                    );
         }
+        Collections.reverse(newStatementList);
+
+        outputSb.append(String.join("\n", newStatementList));
 
         return outputSb.toString();
     }

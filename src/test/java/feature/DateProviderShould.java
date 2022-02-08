@@ -2,13 +2,12 @@ package feature;
 
 import org.junit.jupiter.api.Test;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DateProviderShould {
 
@@ -23,14 +22,8 @@ public class DateProviderShould {
     void return_a_date_object_in_dd_mm_yyyy_format() {
         DateProvider dateProvider = new SimpleDateProvider();
         var result = dateProvider.UtcNow();
-        var isValidFormat = true;
-        try {
-        var formatter = new SimpleDateFormat("dd/mm/yyyy");
-        formatter.parse(result.toString());
-        } catch(ParseException e) {
-            isValidFormat = false;
-        }
+        var expected = new SimpleDateFormat("dd/mm/yyyy").format(new Date());
 
-        assertTrue(isValidFormat);
+        assertEquals(expected, result);
     }
 }
