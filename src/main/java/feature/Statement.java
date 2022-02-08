@@ -1,8 +1,6 @@
 package feature;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Statement {
     private final ArrayList<Transaction> transactions = new ArrayList<Transaction>();
