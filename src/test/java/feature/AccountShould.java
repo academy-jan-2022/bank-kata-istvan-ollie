@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -20,9 +21,9 @@ public class AccountShould {
 
     @BeforeEach
     void setUp(){
-        transactionService = Mockito.mock(TransactionService.class);
-        userInterface = Mockito.mock(UserInterface.class);
-        this.account = new Account(transactionService, userInterface);
+        transactionService = mock(TransactionService.class);
+        userInterface = mock(UserInterface.class);
+        this.account = new Account(transactionService);
     }
 
 
@@ -38,9 +39,4 @@ public class AccountShould {
             verify(transactionService, times(1)).withdraw(100);
     }
 
-    @Test
-    void invoke_UI_when_printing(){
-        account.printStatement();
-        verify(userInterface, times(1)).printline(anyString());
-    }
 }
