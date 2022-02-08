@@ -32,7 +32,17 @@ public class StatementShould {
 	}
 
 	@Test
-	void return_statement_header_a_string_when_no_transactions(){
+	void return_statement_header_when_no_transactions(){
+		var statement = new Statement();
+		var result = statement.render();
+		var expected = "Date || Amount || Balance\n";
+
+		assertEquals(expected, result);
+
+	}
+
+	@Test
+	void return_statement_containing_1_transaction(){
 		var statement = new Statement();
 		var expectedDate =  new Date();
 		statement.add(new Transaction(100, expectedDate));
