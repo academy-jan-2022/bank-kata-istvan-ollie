@@ -5,7 +5,8 @@ import java.util.Collections;
 
 public class Statement {
     private final ArrayList<Transaction> transactions = new ArrayList<Transaction>();
-    private final String statementHeader = "Date || Amount || Balance\n";
+    private final String statementHeader = "Date || Amount || Balance";
+    private final String statementFormatter = "%s || %s || %s";
 
     public void add(Transaction transaction) {
         transactions.add(transaction);
@@ -13,21 +14,16 @@ public class Statement {
 
 
     public String render() {
-        var outputSb = new StringBuilder();
-        outputSb.append(statementHeader);
-        var newStatementList = new ArrayList<String>();
+        var statementLines = new ArrayList<String>();
         var balance = 0;
 
-        for (int i = 0; i<transactions.size(); i++) {
-            var transaction = transactions.get(i);
+        for (var transaction : transactions) {
             balance += transaction.amount();
-            newStatementList.add(transaction.transactionDate() + " || " + transaction.amount() + " || " + balance
-                    );
+            var statementLine = String.format(statementFormatter, transaction.transactionDate(), transaction.amount(), balance);
+            statementLines.add(0, statementLine);
         }
-        Collections.reverse(newStatementList);
 
-        outputSb.append(String.join("\n", newStatementList));
-
-        return outputSb.toString();
+        statementLines.add(0, statementHeader);
+        return String.join("\n", statementLines);
     }
 }
