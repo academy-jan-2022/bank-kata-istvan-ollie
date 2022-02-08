@@ -18,6 +18,6 @@ public class Statement {
 
 
     public String render() {
-        return null;
+        return "Date || Amount || Balance";
     }
 }

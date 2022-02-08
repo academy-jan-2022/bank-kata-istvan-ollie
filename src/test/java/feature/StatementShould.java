@@ -32,7 +32,7 @@ public class StatementShould {
 	}
 
 	@Test
-	void return_statement_as_a_string(){
+	void return_statement_header_a_string_when_no_transactions(){
 		var statement = new Statement();
 		var result = statement.render();
 		var expected = "Date || Amount || Balance";
