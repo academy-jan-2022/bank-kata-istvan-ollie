@@ -17,6 +17,8 @@ public class TransactionService {
     }
 
     public void withdraw(Integer amount) {
-
+        var transactionDate = dateProvider.UtcNow();
+        var transaction = new Transaction(-amount, transactionDate);
+        statement.add(transaction);
     }
 }
