@@ -18,6 +18,8 @@ public class Account implements AccountService {
     }
 
     public void printStatement() {
-        printer.printline("");
+        var statement = transaction.getStatement();
+        var renderedStatement = statement.render();
+        printer.printline(renderedStatement);
     }
 }

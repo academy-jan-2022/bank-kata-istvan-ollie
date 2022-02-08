@@ -17,9 +17,9 @@ public class AcceptanceTests {
 
     @BeforeEach
     void setUp() {
-        this.account = new Account(new TransactionService(new Statement(), new SimpleDateProvider()),
-                new UserInterface());
         mockUI = mock(UserInterface.class);
+        this.account = new Account(new TransactionService(new Statement(), new SimpleDateProvider()),
+                mockUI);
 
     }
 

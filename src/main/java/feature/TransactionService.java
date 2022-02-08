@@ -21,4 +21,8 @@ public class TransactionService {
         var transaction = new Transaction(-amount, transactionDate);
         statement.add(transaction);
     }
+
+    public Statement getStatement(){
+        return statement;
+    }
 }

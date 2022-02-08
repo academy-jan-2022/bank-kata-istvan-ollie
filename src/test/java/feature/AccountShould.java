@@ -37,6 +37,7 @@ public class AccountShould {
 
     @Test
     void invoke_printing_service_when_calling_method(){
+        when(transactionService.getStatement()).thenReturn(new Statement());
         account.printStatement();
         verify(userInterface, times(1)).printline(anyString());
     }
