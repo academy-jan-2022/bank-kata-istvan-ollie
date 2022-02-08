@@ -10,11 +10,11 @@ public class Account implements AccountService {
     }
 
     public void deposit(int amount) {
-        transaction.deposit(amount);
+        transaction.add(amount);
     }
 
     public void withdraw(int amount) {
-        transaction.withdraw(amount);
+        transaction.add(-amount);
     }
 
     public void printStatement() {

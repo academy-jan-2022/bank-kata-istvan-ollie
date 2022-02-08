@@ -10,15 +10,9 @@ public class TransactionService {
         this.dateProvider = dateProvider;
     }
 
-    public void deposit(Integer amount) {
+    public void add(Integer amount) {
         var transactionDate = dateProvider.UtcNow();
         var transaction = new Transaction(amount, transactionDate);
-        statement.add(transaction);
-    }
-
-    public void withdraw(Integer amount) {
-        var transactionDate = dateProvider.UtcNow();
-        var transaction = new Transaction(-amount, transactionDate);
         statement.add(transaction);
     }
 

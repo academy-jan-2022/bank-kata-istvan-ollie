@@ -24,22 +24,13 @@ public class TransactionServiceShould {
     }
 
     @Test
-    void registers_a_deposit_transaction(){
+    void registers_a_transaction(){
         var expectedDate = new Date().toString();
         when(dateProvider.UtcNow()).thenReturn(expectedDate);
         var transactionService = new TransactionService(statement, dateProvider);
-        transactionService.deposit(100);
+        transactionService.add(100);
         var expectedTransaction = new Transaction(100, expectedDate);
         verify(statement).add(expectedTransaction);
     }
 
-    @Test
-    void registers_a_withdraw_transaction(){
-        var expectedDate = new Date().toString();
-        when(dateProvider.UtcNow()).thenReturn(expectedDate);
-        var transactionService = new TransactionService(statement, dateProvider);
-        transactionService.withdraw(100);
-        var expectedTransaction = new Transaction(-100, expectedDate);
-        verify(statement).add(expectedTransaction);
-    }
 }

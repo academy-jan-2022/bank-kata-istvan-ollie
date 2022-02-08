@@ -26,13 +26,13 @@ public class AccountShould {
     @Test
     void invoke_transaction_service_when_depositing() {
         account.deposit(100);
-        verify(transactionService, times(1)).deposit(100);
+        verify(transactionService, times(1)).add(100);
     }
 
     @Test
         void invoke_transaction_service_when_withdrawing(){
             account.withdraw(100);
-            verify(transactionService, times(1)).withdraw(100);
+            verify(transactionService, times(1)).add(-100);
     }
 
     @Test
