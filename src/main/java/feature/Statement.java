@@ -15,4 +15,9 @@ public class Statement {
     public List<Transaction> getTransactions() {
         return Collections.unmodifiableList(transactions);
     }
+
+
+    public String render() {
+        return null;
+    }
 }

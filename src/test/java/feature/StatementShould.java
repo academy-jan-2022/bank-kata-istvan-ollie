@@ -7,13 +7,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 public class StatementShould {
 
 	@Test
 	void returns_an_empty_list_of_transactions(){
 		var statement = new Statement();
 		var result = statement.getTransactions();
-		var expected = new ArrayList<Transaction>(List.of());
+		var expected = new ArrayList<Transaction>();
 
 		Assertions.assertEquals(expected, result);
 	}
@@ -27,6 +29,16 @@ public class StatementShould {
 		var result = statement.getTransactions();
 
 		Assertions.assertEquals(expected, result);
+	}
+
+	@Test
+	void return_statement_as_a_string(){
+		var statement = new Statement();
+		var result = statement.render();
+		var expected = "Date || Amount || Balance";
+
+		assertEquals(expected, result);
+
 	}
 
 }
