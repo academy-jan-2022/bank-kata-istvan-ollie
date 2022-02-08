@@ -1,23 +1,18 @@
 package feature;
 
-import java.util.Date;
-
 public class TransactionService {
-    private Statement statement;
 
-    public TransactionService() {
-        statement = new Statement();
+    private final Statement statement;
+
+    public TransactionService(Statement statement) {
+        this.statement = statement;
     }
 
-    public Integer deposit(Integer amount, Integer balance) {
-        var newBalance = balance + amount;
-        var transaction = new Transaction(new Date().toString(), newBalance);
-        statement.recordTransaction(transaction);
-        return newBalance;
+    public void deposit(Integer amount) {
+        statement.add(amount);
     }
 
-    public Integer withdraw(Integer amount, Integer balance) {
-        return balance - amount;
-    }
+    public void withdraw(Integer amount) {
 
+    }
 }

@@ -1,24 +1,21 @@
 package feature;
 
 public class Account implements AccountService {
-    private TransactionService transactionService;
-    private UserInterface userInterface;
-    private Integer balance;
+    private final TransactionService transaction;
 
-    public Account(TransactionService transactionService, UserInterface userInterface) {
-        this.transactionService = transactionService;
-        this.userInterface = userInterface;
+    public Account(TransactionService transaction) {
+        this.transaction = transaction;
     }
 
     public void deposit(int amount) {
-        transactionService.deposit(amount, balance);
+        transaction.deposit(amount);
     }
 
     public void withdraw(int amount) {
-        transactionService.withdraw(amount, 0);
+        transaction.withdraw(amount);
     }
 
     public void printStatement() {
-        userInterface.printline("");
+        throw new UnsupportedOperationException();
     }
 }

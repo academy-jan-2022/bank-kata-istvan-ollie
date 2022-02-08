@@ -1,12 +1,8 @@
 package feature;
 
-import java.util.List;
-
 public class Statement {
 
-	public List<Transaction> transactionServices;
+    public void add(int amount) {
 
-	public void recordTransaction(Transaction transaction) {
-		transactionServices.add(transaction);
-	}
+    }
 }
