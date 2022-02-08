@@ -4,13 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AccountShould {
@@ -23,7 +19,7 @@ public class AccountShould {
     void setUp(){
         transactionService = mock(TransactionService.class);
         userInterface = mock(UserInterface.class);
-        this.account = new Account(transactionService);
+        this.account = new Account(transactionService, userInterface);
     }
 
 
@@ -37,6 +33,12 @@ public class AccountShould {
         void invoke_transaction_service_when_withdrawing(){
             account.withdraw(100);
             verify(transactionService, times(1)).withdraw(100);
+    }
+
+    @Test
+    void invoke_printing_service_when_calling_method(){
+        account.printStatement();
+        verify(userInterface, times(1)).printline(anyString());
     }
 
 }

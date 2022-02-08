@@ -2,9 +2,11 @@ package feature;
 
 public class Account implements AccountService {
     private final TransactionService transaction;
+    private final UserInterface printer;
 
-    public Account(TransactionService transaction) {
+    public Account(TransactionService transaction, UserInterface printer) {
         this.transaction = transaction;
+        this.printer = printer;
     }
 
     public void deposit(int amount) {
@@ -16,6 +18,6 @@ public class Account implements AccountService {
     }
 
     public void printStatement() {
-        throw new UnsupportedOperationException();
+        printer.printline("");
     }
 }
