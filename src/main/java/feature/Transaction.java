@@ -1,5 +1,6 @@
 package feature;
 
-public record Transaction(String date, Integer amount) {
+import java.util.Date;
 
+public record Transaction(Integer amount, Date transactionDate) {
 }

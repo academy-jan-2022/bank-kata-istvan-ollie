@@ -2,7 +2,7 @@ package feature;
 
 public class Statement {
 
-    public void add(int amount) {
+    public void add(Transaction transaction) {
 
     }
 }
