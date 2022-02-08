@@ -35,7 +35,9 @@ public class StatementShould {
 	void return_statement_header_a_string_when_no_transactions(){
 		var statement = new Statement();
 		var result = statement.render();
-		var expected = "Date || Amount || Balance";
+		var expectedDate = new Date().toString();
+		var expected = "Date || Amount || Balance\n" +
+				expectedDate + " || " + "100" + " || " + "100";
 
 		assertEquals(expected, result);
 
