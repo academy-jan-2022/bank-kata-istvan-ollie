@@ -1,11 +1,11 @@
 package feature;
 
-public class TransactionService {
+public class TransactionRepository {
 
     private final Statement statement;
     private final DateProvider dateProvider;
 
-    public TransactionService(Statement statement, DateProvider dateProvider) {
+    public TransactionRepository(Statement statement, DateProvider dateProvider) {
         this.statement = statement;
         this.dateProvider = dateProvider;
     }

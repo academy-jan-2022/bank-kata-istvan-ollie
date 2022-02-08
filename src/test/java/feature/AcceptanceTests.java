@@ -19,7 +19,7 @@ public class AcceptanceTests {
     void setUp() {
         mockUI = mock(UserInterface.class);
         mockDate = mock(SimpleDateProvider.class);
-        this.account = new Account(new TransactionService(new Statement(), mockDate),
+        this.account = new Account(new TransactionRepository(new Statement(), mockDate),
                 mockUI);
 
     }
