@@ -34,8 +34,10 @@ public class StatementShould {
 	@Test
 	void return_statement_header_a_string_when_no_transactions(){
 		var statement = new Statement();
+		var expectedDate =  new Date();
+		statement.add(new Transaction(100, expectedDate));
 		var result = statement.render();
-		var expectedDate = new Date().toString();
+
 		var expected = "Date || Amount || Balance\n" +
 				expectedDate + " || " + "100" + " || " + "100";
 
