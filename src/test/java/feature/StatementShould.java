@@ -13,7 +13,7 @@ public class StatementShould {
 	void return_statement_header_when_no_transactions(){
 		var statement = new Statement();
 		var result = statement.render();
-		var expected = "Date || Amount || Balance\n";
+		var expected = "Date || Amount || Balance";
 
 		assertEquals(expected, result);
 

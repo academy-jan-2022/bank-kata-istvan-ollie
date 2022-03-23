@@ -1,24 +1,18 @@
 package feature;
 
-public class TransactionService {
+public class TransactionRepository {
 
     private final Statement statement;
     private final DateProvider dateProvider;
 
-    public TransactionService(Statement statement, DateProvider dateProvider) {
+    public TransactionRepository(Statement statement, DateProvider dateProvider) {
         this.statement = statement;
         this.dateProvider = dateProvider;
     }
 
-    public void deposit(Integer amount) {
+    public void add(Integer amount) {
         var transactionDate = dateProvider.UtcNow();
         var transaction = new Transaction(amount, transactionDate);
-        statement.add(transaction);
-    }
-
-    public void withdraw(Integer amount) {
-        var transactionDate = dateProvider.UtcNow();
-        var transaction = new Transaction(-amount, transactionDate);
         statement.add(transaction);
     }
 

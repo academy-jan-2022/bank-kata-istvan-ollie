@@ -1,20 +1,20 @@
 package feature;
 
 public class Account implements AccountService {
-    private final TransactionService transaction;
+    private final TransactionRepository transaction;
     private final UserInterface printer;
 
-    public Account(TransactionService transaction, UserInterface printer) {
+    public Account(TransactionRepository transaction, UserInterface printer) {
         this.transaction = transaction;
         this.printer = printer;
     }
 
     public void deposit(int amount) {
-        transaction.deposit(amount);
+        transaction.add(amount);
     }
 
     public void withdraw(int amount) {
-        transaction.withdraw(amount);
+        transaction.add(-amount);
     }
 
     public void printStatement() {

@@ -11,33 +11,34 @@ import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.class)
 public class AccountShould {
 
-        @Mock TransactionService transactionService;
+        @Mock
+        TransactionRepository transactionRepository;
         @Mock UserInterface userInterface;
         private Account account;
 
     @BeforeEach
     void setUp(){
-        transactionService = mock(TransactionService.class);
+        transactionRepository = mock(TransactionRepository.class);
         userInterface = mock(UserInterface.class);
-        this.account = new Account(transactionService, userInterface);
+        this.account = new Account(transactionRepository, userInterface);
     }
 
 
     @Test
     void invoke_transaction_service_when_depositing() {
         account.deposit(100);
-        verify(transactionService, times(1)).deposit(100);
+        verify(transactionRepository, times(1)).add(100);
     }
 
     @Test
         void invoke_transaction_service_when_withdrawing(){
             account.withdraw(100);
-            verify(transactionService, times(1)).withdraw(100);
+            verify(transactionRepository, times(1)).add(-100);
     }
 
     @Test
     void invoke_printing_service_when_calling_method(){
-        when(transactionService.getStatement()).thenReturn(new Statement());
+        when(transactionRepository.getStatement()).thenReturn(new Statement());
         account.printStatement();
         verify(userInterface, times(1)).printline(anyString());
     }
